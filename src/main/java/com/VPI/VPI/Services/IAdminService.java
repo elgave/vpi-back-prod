@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface IAdminService {
     List<AdminEntity> getAllAdmins();
     AdminEntity createAdmin(NuevoAdminDto admin);
-    AdminEntity createAdminAFuego( );
+    //AdminEntity createAdminAFuego( );
     Optional<AdminEntity> findByEmail(String email);
     void aprobarRestarurante(String id);
     void bloquearRestaurante(String idRestaurante, String motivo);

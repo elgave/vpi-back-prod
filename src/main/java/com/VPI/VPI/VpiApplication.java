@@ -21,12 +21,12 @@ public class VpiApplication {
 	IAdminService adminService;
 
 
-	@PostConstruct
+	/*@PostConstruct
 	public AdminEntity createAdminAFuego() {
 		System.out.println("User: admin Pass: 1234");
 		return adminService.createAdminAFuego();
 
-	}
+	}*/
 
 
 	public static void main(String[] args) {

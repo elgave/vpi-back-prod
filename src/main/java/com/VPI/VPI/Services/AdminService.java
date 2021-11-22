@@ -72,7 +72,7 @@ public class AdminService implements IAdminService {
         return adminRepository.save(usuarioEntity);
     }
 
-    public AdminEntity createAdminAFuego( ) {
+    /*public AdminEntity createAdminAFuego( ) {
         String pass = "1234";
         String passEncript = passwordEncoder.encode(pass);
         Date currentSqlDate = new Date(System.currentTimeMillis());
@@ -85,7 +85,7 @@ public class AdminService implements IAdminService {
         adminEntity.setFecha(currentSqlDate);
 
         return adminRepository.save(adminEntity);
-    }
+    }*/
 
     public void aprobarRestarurante(String id)
     {

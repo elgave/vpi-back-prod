@@ -30,6 +30,7 @@ import javax.validation.Valid;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.security.Principal;
 import java.util.Optional;
 import java.util.UUID;
@@ -208,14 +209,15 @@ public class AuthController {
     public ResponseEntity<?> sendEmailTemplate(@RequestBody EmailDto emailDto){
         Optional<UsuarioEntity> usuarioOpt = usuarioService.findByEmail(emailDto.getMailTo());
         if(!usuarioOpt.isPresent())
-            return new ResponseEntity("No existe ningun usuario con el correo ingresado", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity("No existe ningún usuario con el correo ingresado", HttpStatus.BAD_REQUEST);
 
         UsuarioEntity usuario = usuarioOpt.get();
         emailDto.setMailFrom(mailFrom);
         emailDto.setMailTo(usuario.getEmail());
         emailDto.setSubject("Cambio de contraseña");
-        UUID uuid = UUID.randomUUID();
-        String passwordTemporal = uuid.toString();
+        // UUID uuid = UUID.randomUUID();
+        String pass = String.format("%040d", new BigInteger(UUID.randomUUID().toString().replace("-", ""), 16));
+        String passwordTemporal = pass.substring(0,8);
         emailDto.setPasswordTemporal(passwordTemporal);
         usuarioService.setpasswordTemporal(usuario.getEmail(),passwordTemporal,usuario.getRol().toString());
         emailService.sendEmailTemplate(emailDto);
@@ -232,7 +234,7 @@ public class AuthController {
         }
         Optional<UsuarioEntity>  usuarioOpt = usuarioService.findByPassWordTemporal(changePassView.getPasswordTemporal());
         if(!usuarioOpt.isPresent()) {
-            return new ResponseEntity("No existe ningun usuario con estas credenciales", HttpStatus.NOT_FOUND);
+            return new ResponseEntity("Código incorrecto", HttpStatus.NOT_FOUND);
         }
         usuarioService.changePassword(changePassView.getPasswordTemporal(),changePassView.getPassword());
         return new ResponseEntity(HttpStatus.OK);

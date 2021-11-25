@@ -41,8 +41,8 @@ public class EmailService {
             Context context = new Context();
 
             Map<String, Object> model = new HashMap<>();
-            //model.put("userName", emailDto.getUserName());
-            model.put("url",urlFront + emailDto.getPasswordTemporal());
+            //  model.put("url",urlFront + emailDto.getPasswordTemporal());
+            model.put("codigo",emailDto.getPasswordTemporal());
             context.setVariables(model);
 
 

@@ -47,6 +47,9 @@ public class ClienteService implements IClienteService {
     @Autowired
     private IReclamoRepository reclamoRepository;
 
+    @Autowired
+    private WebSocketService webSocketService;
+
 
     private ClienteEntity mapToEntity(NuevoClienteDto clienteDto)  {
         ClienteEntity clienteEntity = modelMapper.map(clienteDto, ClienteEntity.class);
@@ -221,8 +224,11 @@ public class ClienteService implements IClienteService {
         pedidoEntity.setCliente(clienteEntity);
         pedidoEntity.setDireccion(pedido.getDireccion());
 
+        notifyFrontend();
 
         return pedidoRepository.save(pedidoEntity);
+
+
     }
 
     @Override
@@ -571,6 +577,16 @@ public class ClienteService implements IClienteService {
         Optional<ClienteEntity> clienteOpt = clienteRepository.findByEmail(idCliente);
         ClienteEntity cliente = clienteOpt.get();
         return direccionRepository.existsByClienteAndNombre(cliente,nombre);
+    }
+
+    private void notifyFrontend(){
+        final String entityTopic = "pedidos";
+        if (entityTopic == null){
+
+            return;
+        }
+
+        webSocketService.sendMessage(entityTopic);
     }
 
 

@@ -18,6 +18,6 @@ public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer 
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry){
-        registry.addEndpoint("/vapai-websocket").setAllowedOrigins("http://localhost:8081","http://localhost:8081/").withSockJS();
+        registry.addEndpoint("/vapai-websocket").setAllowedOrigins("https://vapai.netlify.app","https://vapai.netlify.app/").withSockJS();
     }
 }

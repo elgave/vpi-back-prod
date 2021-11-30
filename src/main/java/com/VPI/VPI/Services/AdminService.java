@@ -182,6 +182,11 @@ public class AdminService implements IAdminService {
     @Override
     public List<RestauranteDto> getRestaurantes() {
         List<RestauranteDto> restauranteDtos = mapToDto(restauranteRepository.findByConfirmadoTrue());
+        for(RestauranteDto r: restauranteDtos){
+            r.setCalificacionGral(restauranteService.obtenerCalificacionGlobal(r.getEmail()));
+        }
+
+
         return restauranteDtos;
     }
 

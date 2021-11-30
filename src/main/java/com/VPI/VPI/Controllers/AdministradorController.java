@@ -147,7 +147,6 @@ public class AdministradorController {
 
     @GetMapping("restaurantesMejorCali")
     public List<RestaurantesMejorCaliDto> restaurantesMejorCali(){
-
         return restauranteService.restaurantesMejorCaliCliente();
     }
 

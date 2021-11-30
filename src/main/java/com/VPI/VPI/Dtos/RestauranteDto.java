@@ -25,6 +25,8 @@ public class RestauranteDto {
     private String horario;
     private Boolean confirmado;
     private Number calificacionVPI;
+    private Number calificacionGral;
+
 
     public String getEmail() {
         return email;
@@ -129,5 +131,13 @@ public class RestauranteDto {
 
     public void setCalificacionVPI(Number calificacionVPI) {
         this.calificacionVPI = calificacionVPI;
+    }
+
+    public Number getCalificacionGral() {
+        return calificacionGral;
+    }
+
+    public void setCalificacionGral(Number calificacionGral) {
+        this.calificacionGral = calificacionGral;
     }
 }

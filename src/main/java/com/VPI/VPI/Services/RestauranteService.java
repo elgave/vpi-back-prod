@@ -215,6 +215,9 @@ public class RestauranteService implements IRestauranteService {
         menuEntity.setRestaurante(restaurante);
         menuEntity.setNombre(menu.getNombre());
         menuEntity.setCategoria(menu.getCategoria());
+        if(menu.getPromocion() == null){
+            menu.setPromocion(false);
+        }
         menuEntity.setPromocion(menu.getPromocion());
         menuEntity.setDescripcion(menu.getDescripcion());
         menuEntity.setCosto(menu.getCosto());

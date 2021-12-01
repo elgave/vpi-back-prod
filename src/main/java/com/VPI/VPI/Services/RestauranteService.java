@@ -628,6 +628,7 @@ public class RestauranteService implements IRestauranteService {
 
         RestauranteDto restauranteDto = new RestauranteDto();
         restauranteDto.setFoto(restauranteEntity.get().getFoto());
+        restauranteDto.setCalificacionVPI(restauranteEntity.get().getCalificacionVPI());
         return  restauranteDto;
     }
 

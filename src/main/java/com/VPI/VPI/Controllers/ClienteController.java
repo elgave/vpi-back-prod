@@ -211,6 +211,12 @@ public class ClienteController {
         return restauranteService.restConPromo();
     }
 
+    @PostMapping("menuCategoria")
+    public List<MenuDto> menuCategoria(@RequestBody MenuCategoriaDto dto){
+
+        return restauranteService.menuCatagorias(dto.getIdRestaurante(), dto.getCategoria());
+    }
+
 
 
 

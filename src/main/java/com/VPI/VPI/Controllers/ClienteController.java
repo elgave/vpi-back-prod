@@ -206,6 +206,11 @@ public class ClienteController {
         return restauranteService.restaurantesMasVentas();
     }
 
+    @GetMapping("getRestConPromo")
+    public List<RestauranteDto> getRestConPromo() {
+        return restauranteService.restConPromo();
+    }
+
 
 
 

@@ -37,7 +37,7 @@ public class ClienteService implements IClienteService {
     private  ICalificacionRepository calificacionRepository;
 
     @Autowired
-    private  IClienteService clienteService;
+    private  IRestauranteService restauranteService;
 
     @Autowired
     private IFavoritoRepository favoritoRepository;
@@ -322,6 +322,8 @@ public class ClienteService implements IClienteService {
         Optional<RestauranteEntity> restauranteOPt = restauranteRepository.findByNombreRestaurante(nomRestaurante);
         RestauranteEntity restaurante = restauranteOPt.get();
         RestauranteDto restauranteDto = mapToDto(restaurante);
+
+        restauranteDto.setCalificacionGral(restauranteService.obtenerCalificacionGlobal(restauranteDto.getEmail()));
         return restauranteDto;
     }
 

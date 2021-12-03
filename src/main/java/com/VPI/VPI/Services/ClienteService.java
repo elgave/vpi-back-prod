@@ -234,6 +234,11 @@ public class ClienteService implements IClienteService {
     @Override
     public List<RestauranteDto> getRestaurantes() {
         List<RestauranteDto> restauranteDtos = mapToDto(restauranteRepository.findByConfirmadoTrueAndAbiertoTrueAndBloqueadoFalse());
+        for (RestauranteDto r : restauranteDtos){
+
+            r.setCalificacionGral(restauranteService.obtenerCalificacionGlobal(r.getEmail()));
+        }
+        
         return restauranteDtos;
     }
 

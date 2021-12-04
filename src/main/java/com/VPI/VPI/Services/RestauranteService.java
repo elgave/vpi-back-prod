@@ -521,6 +521,12 @@ public class RestauranteService implements IRestauranteService {
             ReclamoEntity.EstadoReclamo estado = ReclamoEntity.EstadoReclamo.valueOf(dto.getFiltro());
             reclamoDtos = mapReclamoToDtos(reclamoRepository.listReclamos(restaurante, estado));
         }
+
+        for(ReclamoDto r : reclamoDtos) {
+            Optional<PedidoEntity> pedido = pedidoRepository.findByIdPedido(r.getPedido());
+            r.setCliente(pedido.get().getCliente().getEmail());
+        }
+
         return reclamoDtos;
     }
 

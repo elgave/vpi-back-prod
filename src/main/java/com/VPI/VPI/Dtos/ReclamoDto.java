@@ -14,6 +14,7 @@ public class ReclamoDto {
     private String comentario;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm")
     private Date fecha;
+    private String cliente;
 
 
 
@@ -64,5 +65,13 @@ public class ReclamoDto {
 
     public void setIdReclamo(Integer idReclamo) {
         this.idReclamo = idReclamo;
+    }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
     }
 }

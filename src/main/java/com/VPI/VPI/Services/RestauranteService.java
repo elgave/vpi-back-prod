@@ -979,7 +979,7 @@ public class RestauranteService implements IRestauranteService {
             }
         }
 
-        Collections.sort(dtoList,Collections.reverseOrder());
+        Collections.sort(dtoList);
 
         List<RestaurantesMejorCaliDto> restaurantesFinal = new ArrayList<>();
         Integer contador = 0;

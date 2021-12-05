@@ -204,67 +204,67 @@ public class AdminService implements IAdminService {
         categorias.add(c);
 
         CategoriaDto c2 = new CategoriaDto();
-        c.setNombre(MenuEntity.Categoria.Sushi);
+        c2.setNombre(MenuEntity.Categoria.Sushi);
         categorias.add(c2);
 
         CategoriaDto c3 = new CategoriaDto();
-        c.setNombre(MenuEntity.Categoria.Empanadas);
+        c3.setNombre(MenuEntity.Categoria.Empanadas);
         categorias.add(c3);
 
         CategoriaDto c4 = new CategoriaDto();
-        c.setNombre(MenuEntity.Categoria.Saludable);
+        c4.setNombre(MenuEntity.Categoria.Saludable);
         categorias.add(c4);
 
         CategoriaDto c5 = new CategoriaDto();
-        c.setNombre(MenuEntity.Categoria.Hamburguesas);
+        c5.setNombre(MenuEntity.Categoria.Hamburguesas);
         categorias.add(c5);
 
         CategoriaDto c6 = new CategoriaDto();
-        c.setNombre(MenuEntity.Categoria.Milanesas);
+        c6.setNombre(MenuEntity.Categoria.Milanesas);
         categorias.add(c6);
 
         CategoriaDto c7 = new CategoriaDto();
-        c.setNombre(MenuEntity.Categoria.Helados);
+        c7.setNombre(MenuEntity.Categoria.Helados);
         categorias.add(c7);
 
         CategoriaDto c8 = new CategoriaDto();
-        c.setNombre(MenuEntity.Categoria.Postres);
+        c8.setNombre(MenuEntity.Categoria.Postres);
         categorias.add(c8);
 
         CategoriaDto c9 = new CategoriaDto();
-        c.setNombre(MenuEntity.Categoria.Vegetariana);
+        c9.setNombre(MenuEntity.Categoria.Vegetariana);
         categorias.add(c9);
 
         CategoriaDto c10 = new CategoriaDto();
-        c.setNombre(MenuEntity.Categoria.Italiana);
+        c10.setNombre(MenuEntity.Categoria.Italiana);
         categorias.add(c10);
 
         CategoriaDto c11 = new CategoriaDto();
-        c.setNombre(MenuEntity.Categoria.Pastas);
+        c11.setNombre(MenuEntity.Categoria.Pastas);
         categorias.add(c11);
 
         CategoriaDto c12 = new CategoriaDto();
-        c.setNombre(MenuEntity.Categoria.Chivito);
+        c12.setNombre(MenuEntity.Categoria.Chivito);
         categorias.add(c12);
 
         CategoriaDto c13 = new CategoriaDto();
-        c.setNombre(MenuEntity.Categoria.Panadería);
+        c13.setNombre(MenuEntity.Categoria.Panadería);
         categorias.add(c13);
 
         CategoriaDto c14 = new CategoriaDto();
-        c.setNombre(MenuEntity.Categoria.Parrilla);
+        c14.setNombre(MenuEntity.Categoria.Parrilla);
         categorias.add(c14);
 
         CategoriaDto c15 = new CategoriaDto();
-        c.setNombre(MenuEntity.Categoria.Vegano);
+        c15.setNombre(MenuEntity.Categoria.Vegano);
         categorias.add(c15);
 
         CategoriaDto c16 = new CategoriaDto();
-        c.setNombre(MenuEntity.Categoria.Celiaco);
+        c16.setNombre(MenuEntity.Categoria.Celiaco);
         categorias.add(c16);
 
         CategoriaDto c17 = new CategoriaDto();
-        c.setNombre(MenuEntity.Categoria.Otros);
+        c17.setNombre(MenuEntity.Categoria.Otros);
         categorias.add(c17);
 
         for (CategoriaDto cat : categorias) {

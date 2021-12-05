@@ -266,6 +266,13 @@ public class RestauranteController{
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    @PostMapping("modificarMenuSinFoto")
+    public ResponseEntity<?> modificarMenuSinFoto (@RequestBody MenuDto menuDto){
+
+        restauranteService.modificarMenu(menuDto);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
 
     @GetMapping("getAgregados")
     public List<AltaAgregadoDto> getAgregados(Integer idMenu) {

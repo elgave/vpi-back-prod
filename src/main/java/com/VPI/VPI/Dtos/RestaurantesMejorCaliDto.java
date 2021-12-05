@@ -3,7 +3,7 @@ package com.VPI.VPI.Dtos;
 public class RestaurantesMejorCaliDto implements Comparable<RestaurantesMejorCaliDto>{
 
     private String nombreRestaurante;
-    private Double calificacion;
+    private Integer calificacion;
 
     public String getNombreRestaurante() {
         return nombreRestaurante;
@@ -13,11 +13,11 @@ public class RestaurantesMejorCaliDto implements Comparable<RestaurantesMejorCal
         this.nombreRestaurante = nombreRestaurante;
     }
 
-    public Double getCalificacion() {
+    public Integer getCalificacion() {
         return calificacion;
     }
 
-    public void setCalificacion(Double calificacion) {
+    public void setCalificacion(Integer calificacion) {
         this.calificacion = calificacion;
     }
 

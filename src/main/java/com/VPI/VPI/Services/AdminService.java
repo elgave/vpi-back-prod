@@ -1,8 +1,7 @@
 package com.VPI.VPI.Services;
 
 
-import com.VPI.VPI.Dtos.NuevoAdminDto;
-import com.VPI.VPI.Dtos.RestauranteDto;
+import com.VPI.VPI.Dtos.*;
 import com.VPI.VPI.Entities.*;
 import com.VPI.VPI.Repositories.*;
 import org.modelmapper.ModelMapper;
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -45,6 +45,9 @@ public class AdminService implements IAdminService {
     private IReclamoRepository reclamoRepository;
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private  IMenuRepository menuRepository;
 
     public List<AdminEntity> getAllAdmins() {
 
@@ -191,4 +194,90 @@ public class AdminService implements IAdminService {
     }
 
 
+    public  List<RestaurantesMejorCaliDto> restaurantesMejorCaliCliente() {
+
+        List<RestaurantesMejorCaliDto> restaurantesMejorCaliDtos = new ArrayList<>();
+
+        List<CategoriaDto> categorias = new ArrayList<>();
+        CategoriaDto c = new CategoriaDto();
+        c.setNombre(MenuEntity.Categoria.Pizza);
+        categorias.add(c);
+
+        CategoriaDto c2 = new CategoriaDto();
+        c.setNombre(MenuEntity.Categoria.Sushi);
+        categorias.add(c2);
+
+        CategoriaDto c3 = new CategoriaDto();
+        c.setNombre(MenuEntity.Categoria.Empanadas);
+        categorias.add(c3);
+
+        CategoriaDto c4 = new CategoriaDto();
+        c.setNombre(MenuEntity.Categoria.Saludable);
+        categorias.add(c4);
+
+        CategoriaDto c5 = new CategoriaDto();
+        c.setNombre(MenuEntity.Categoria.Hamburguesas);
+        categorias.add(c5);
+
+        CategoriaDto c6 = new CategoriaDto();
+        c.setNombre(MenuEntity.Categoria.Milanesas);
+        categorias.add(c6);
+
+        CategoriaDto c7 = new CategoriaDto();
+        c.setNombre(MenuEntity.Categoria.Helados);
+        categorias.add(c7);
+
+        CategoriaDto c8 = new CategoriaDto();
+        c.setNombre(MenuEntity.Categoria.Postres);
+        categorias.add(c8);
+
+        CategoriaDto c9 = new CategoriaDto();
+        c.setNombre(MenuEntity.Categoria.Vegetariana);
+        categorias.add(c9);
+
+        CategoriaDto c10 = new CategoriaDto();
+        c.setNombre(MenuEntity.Categoria.Italiana);
+        categorias.add(c10);
+
+        CategoriaDto c11 = new CategoriaDto();
+        c.setNombre(MenuEntity.Categoria.Pastas);
+        categorias.add(c11);
+
+        CategoriaDto c12 = new CategoriaDto();
+        c.setNombre(MenuEntity.Categoria.Chivito);
+        categorias.add(c12);
+
+        CategoriaDto c13 = new CategoriaDto();
+        c.setNombre(MenuEntity.Categoria.Panadería);
+        categorias.add(c13);
+
+        CategoriaDto c14 = new CategoriaDto();
+        c.setNombre(MenuEntity.Categoria.Parrilla);
+        categorias.add(c14);
+
+        CategoriaDto c15 = new CategoriaDto();
+        c.setNombre(MenuEntity.Categoria.Vegano);
+        categorias.add(c15);
+
+        CategoriaDto c16 = new CategoriaDto();
+        c.setNombre(MenuEntity.Categoria.Celiaco);
+        categorias.add(c16);
+
+        CategoriaDto c17 = new CategoriaDto();
+        c.setNombre(MenuEntity.Categoria.Otros);
+        categorias.add(c17);
+
+        for (CategoriaDto cat : categorias) {
+            Integer cantMenu = menuRepository.cantMenuXCat(cat.getNombre());
+
+            RestaurantesMejorCaliDto r = new RestaurantesMejorCaliDto();
+            r.setNombreRestaurante(cat.getNombre().toString());
+            r.setCalificacion(cantMenu);
+
+            restaurantesMejorCaliDtos.add(r);
+        }
+
+        return restaurantesMejorCaliDtos;
+
+    }
 }

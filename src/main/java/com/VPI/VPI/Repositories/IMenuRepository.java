@@ -26,7 +26,7 @@ public interface IMenuRepository extends JpaRepository<MenuEntity, Integer> {
    @Query("select m FROM MenuEntity m JOIN RestauranteEntity r on m.restaurante=r.email where r.email=:restaurante And m.categoria=:cat")
    List<MenuEntity> menusRestauranteCategoria(@Param("restaurante")String restaurante,@Param("cat") MenuEntity.Categoria cat);
 
-   @Query("select count(m) FROM MenuEntity m where m.categoria=:cat")
+   @Query("select count(*) FROM MenuEntity m where m.categoria=:cat")
    Integer cantMenuXCat(@Param("cat") MenuEntity.Categoria cat);
 
 

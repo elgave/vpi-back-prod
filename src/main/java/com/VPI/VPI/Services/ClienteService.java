@@ -551,7 +551,8 @@ public class ClienteService implements IClienteService {
 
         calificacionRepository.borrarCalificacionesHaciaCliente(idCliente);
 
-
+        favoritoRepository.borrarFavoritosDeCliente(idCliente);
+        
         clienteRepository.delete(clienteEntity.get());
 
 

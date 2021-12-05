@@ -2,6 +2,7 @@ package com.VPI.VPI.Services;
 
 import com.VPI.VPI.Dtos.NuevoAdminDto;
 import com.VPI.VPI.Dtos.RestauranteDto;
+import com.VPI.VPI.Dtos.RestaurantesMejorCaliDto;
 import com.VPI.VPI.Entities.AdminEntity;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public interface IAdminService {
     void calificacionVPI(String idRestaurante);
     Integer cantPedidos(String idRestautante);
     List<RestauranteDto> getRestaurantes();
+    List<RestaurantesMejorCaliDto> restaurantesMejorCaliCliente();
 
 
 

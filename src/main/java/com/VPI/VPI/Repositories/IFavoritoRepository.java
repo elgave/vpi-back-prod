@@ -21,5 +21,10 @@ public interface IFavoritoRepository extends JpaRepository<FavoritoEntity, Integ
     @Query("delete from FavoritoEntity f where  f.restaurante_id = :restaurante")
     void borrarFavoritosHaciaRestaurante(@Param("restaurante")String restaurante);
 
+    @Transactional
+    @Modifying
+    @Query("delete from FavoritoEntity f where  f.cliente_id = :cliente")
+    void borrarFavoritosDeCliente(@Param("cliente")String cliente);
+
 
 }

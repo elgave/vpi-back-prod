@@ -272,7 +272,7 @@ public class AdminService implements IAdminService {
 
             RestaurantesMejorCaliDto r = new RestaurantesMejorCaliDto();
             r.setNombreRestaurante(cat.getNombre().toString());
-            r.setCalificacion(cantMenu);
+            r.setCalificacion(cantMenu.doubleValue());
 
             restaurantesMejorCaliDtos.add(r);
         }

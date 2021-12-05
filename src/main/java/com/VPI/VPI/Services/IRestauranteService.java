@@ -67,6 +67,6 @@ public interface IRestauranteService {
     void rechazarPedido(Integer idPedido, String motivo) throws IOException;
     List<RestaurantesMejorCaliDto> restaurantesMejorVPI();
     List<RestaurantesMejorCaliDto> restaurantesMejorTiempo();
-    List<RestaurantesMejorCaliDto> restaurantesMejorCaliCliente();
+    //List<RestaurantesMejorCaliDto> restaurantesMejorCaliCliente();
 
 }

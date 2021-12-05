@@ -997,7 +997,7 @@ public class RestauranteService implements IRestauranteService {
 
     }
 
-    @Override
+    /*@Override
     public List<RestaurantesMejorCaliDto> restaurantesMejorCaliCliente() {
 
         List<RestaurantesMejorCaliDto> dtoList = new ArrayList<>();
@@ -1031,7 +1031,7 @@ public class RestauranteService implements IRestauranteService {
         }
         return restaurantesFinal;
 
-    }
+    }*/
 
 
 

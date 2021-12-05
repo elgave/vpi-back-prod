@@ -998,31 +998,31 @@ public class RestauranteService implements IRestauranteService {
     }
 
     @Override
-    public List<RestaurantesMejorCaliDto> restaurantesMejorCaliCliente(){
+    public List<RestaurantesMejorCaliDto> restaurantesMejorCaliCliente() {
 
         List<RestaurantesMejorCaliDto> dtoList = new ArrayList<>();
         List<RestauranteEntity> restaurantes = restauranteRepository.findByConfirmado(true);
 
 
-        for(RestauranteEntity r :restaurantes){
-            if(!r.getEmail().equals("deleteUserRest")) {
+        for (RestauranteEntity r : restaurantes) {
+            if (!r.getEmail().equals("deleteUserRest")) {
                 RestaurantesMejorCaliDto dto = new RestaurantesMejorCaliDto();
                 dto.setNombreRestaurante(r.getNombreRestaurante());
 
                 Double cali = obtenerCalificacionGlobal(r.getEmail());
-                    dto.setCalificacion(cali);
-                    dtoList.add(dto);
+                dto.setCalificacion(cali);
+                dtoList.add(dto);
 
             }
         }
-        Collections.sort(dtoList,Collections.reverseOrder());
+        Collections.sort(dtoList, Collections.reverseOrder());
 
         List<RestaurantesMejorCaliDto> restaurantesFinal = new ArrayList<>();
         Integer contador = 0;
 
-        for(RestaurantesMejorCaliDto re: dtoList){
+        for (RestaurantesMejorCaliDto re : dtoList) {
 
-            if(contador > 9)
+            if (contador > 9)
                 break;
             else {
                 restaurantesFinal.add(re);

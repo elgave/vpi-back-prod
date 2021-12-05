@@ -1,5 +1,6 @@
 package com.VPI.VPI.Repositories;
 
+import com.VPI.VPI.Entities.CalificacionEntity;
 import com.VPI.VPI.Entities.MenuEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -25,6 +26,8 @@ public interface IMenuRepository extends JpaRepository<MenuEntity, Integer> {
    @Query("select m FROM MenuEntity m JOIN RestauranteEntity r on m.restaurante=r.email where r.email=:restaurante And m.categoria=:cat")
    List<MenuEntity> menusRestauranteCategoria(@Param("restaurante")String restaurante,@Param("cat") MenuEntity.Categoria cat);
 
+   @Query("select count(m) FROM MenuEntity m where m.categoria=:cat")
+   Integer cantMenuXCat(@Param("cat") MenuEntity.Categoria cat);
 
 
 

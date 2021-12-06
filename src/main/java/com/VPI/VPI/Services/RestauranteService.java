@@ -14,6 +14,7 @@ import java.io.IOException;
 
 import java.math.BigDecimal;
 
+import java.nio.charset.StandardCharsets;
 import java.sql.Date;
 import java.text.DecimalFormat;
 import java.util.*;
@@ -334,14 +335,17 @@ public class RestauranteService implements IRestauranteService {
             pedidoEntity.setEstado(PedidoEntity.EstadoPedido.Confirmado);
         }
         pedidoRepository.save(pedidoEntity);
-        emialService.sendEmailConfirmarPedido(pedidoEntity.getClienteEmail(), tiempoE);
 
-        String emailClienteNoti = pedidoEntity.getClienteEmail();
-        Optional<ClienteEntity> clienteEntity = clienteRepository.findByEmail(emailClienteNoti);
+        if(!pedidoEntity.getClienteEmail().equals("deleteUser")) {
+            emialService.sendEmailConfirmarPedido(pedidoEntity.getClienteEmail(), tiempoE);
 
-        String token = clienteEntity.get().getToken();
-        if(token != null) {
-            notificationervice.sendNotifiction(token, tiempoE);
+            String emailClienteNoti = pedidoEntity.getClienteEmail();
+            Optional<ClienteEntity> clienteEntity = clienteRepository.findByEmail(emailClienteNoti);
+
+            String token = clienteEntity.get().getToken();
+            if (token != null) {
+                notificationervice.sendNotifiction(token, tiempoE);
+            }
         }
     }
     public void aceptarReclamo(Integer idReclamo, String tipo) throws IOException {
@@ -355,13 +359,15 @@ public class RestauranteService implements IRestauranteService {
         }
         reclamoRepository.save(reclamoEntity);
 
-        emialService.sendEmailAceptaReclamo(reclamoEntity.getPedido().getCliente().getEmail(), tipo);
+        if(!reclamoEntity.getPedido().getCliente().getEmail().equals("deleteUser")) {
+            emialService.sendEmailAceptaReclamo(reclamoEntity.getPedido().getCliente().getEmail(), tipo);
 
-        Optional<ClienteEntity> clienteEntity = clienteRepository.findByEmail(reclamoEntity.getPedido().getCliente().getEmail());
+            Optional<ClienteEntity> clienteEntity = clienteRepository.findByEmail(reclamoEntity.getPedido().getCliente().getEmail());
 
-        String token = clienteEntity.get().getToken();
-        if(token != null) {
-            notificationervice.sendNotifictionAceptarReclamo(token, tipo);
+            String token = clienteEntity.get().getToken();
+            if (token != null) {
+                notificationervice.sendNotifictionAceptarReclamo(token, tipo);
+            }
         }
 
 //restauranteEntity.setRol(ClienteEntity.Rol.Restaurante);
@@ -437,13 +443,15 @@ public class RestauranteService implements IRestauranteService {
 
         reclamoRepository.save(reclamo.get());
 
-        emialService.sendEmailRechazarReclamo(mailCliente,motivo);
+        if(!mailCliente.equals("deleteUser")) {
+            emialService.sendEmailRechazarReclamo(mailCliente, motivo);
 
-        Optional<ClienteEntity> clienteEntity = clienteRepository.findByEmail(mailCliente);
+            Optional<ClienteEntity> clienteEntity = clienteRepository.findByEmail(mailCliente);
 
-        String token = clienteEntity.get().getToken();
-        if(token != null) {
-            notificationervice.sendNotifictionRechazoReclamo(token, motivo);
+            String token = clienteEntity.get().getToken();
+            if (token != null) {
+                notificationervice.sendNotifictionRechazoReclamo(token, motivo);
+            }
         }
 
     }
@@ -903,14 +911,17 @@ public class RestauranteService implements IRestauranteService {
             pedidoEntity.setEstado(PedidoEntity.EstadoPedido.Rechazado);
         }
         pedidoRepository.save(pedidoEntity);
-        emialService.sendEmailRechazarPedido(pedidoEntity.getClienteEmail(), motivo);
 
-        String emailClienteNoti = pedidoEntity.getClienteEmail();
-        Optional<ClienteEntity> clienteEntity = clienteRepository.findByEmail(emailClienteNoti);
+        if(!pedidoEntity.getClienteEmail().equals("deleteUser")) {
+            emialService.sendEmailRechazarPedido(pedidoEntity.getClienteEmail(), motivo);
 
-        String token = clienteEntity.get().getToken();
-        if(token != null) {
-            notificationervice.sendNotifictionRechazoPedido(token, motivo);
+            String emailClienteNoti = pedidoEntity.getClienteEmail();
+            Optional<ClienteEntity> clienteEntity = clienteRepository.findByEmail(emailClienteNoti);
+
+            String token = clienteEntity.get().getToken();
+            if (token != null) {
+                notificationervice.sendNotifictionRechazoPedido(token, motivo);
+            }
         }
     }
 

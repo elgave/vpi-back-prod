@@ -168,7 +168,7 @@ public class AuthController {
         Optional<UsuarioEntity> usuarioOpt = usuarioService.findByEmail(loginView.getEmail());
 
         if(!usuarioOpt.isPresent()) {
-            return new ResponseEntity("No existe ningun usuario con el correo ingresado", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity("Usuario o contraseña incorrectos", HttpStatus.BAD_REQUEST);
         }
         UsuarioEntity usuario = usuarioOpt.get();
         if(usuario.getRol()== UsuarioEntity.Rol.Cliente){
